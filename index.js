@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 const cors=require('cors')
 const BodyParser=require('body-parser')
-const port = 1000
+const port = 2021
 const fileUpload = require('express-fileupload');
 const MongoClient = require('mongodb').MongoClient;
-const uri = `mongodb+srv://UTSA-DEV:TiUvIxKkzwHdkZWY@cluster1.82lzw.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://UTSA-DEV:TiUvIxKkzwHdkZWY@cluster1.82lzw.mongodb.net/UTSA-OFFICIAL?retryWrites=true&w=majority`
 ;require('dotenv').config()
 const ObjectId=require('mongodb').ObjectId
 app.use(cors())
@@ -19,10 +19,10 @@ app.get('/', (req, res) => {
 const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
 client.connect(err => {
     console.log(err)
-    const CollectionOfAdmin = client.db(`${process.env.DB_NAME}`).collection('AdminEmails')
-    const CollectionOfMembers = client.db(`${process.env.DB_NAME}`).collection('TeamMembers')
-    const CollectionOfUserProfiles = client.db(`${process.env.DB_NAME}`).collection('User-Profiles')
-    const CollectionOfOnudaanData = client.db(`${process.env.DB_NAME}`).collection('Donation')
+    const CollectionOfAdmin = client.db(`UTSA-OFFICIAL`).collection('AdminEmails')
+    const CollectionOfMembers = client.db(`UTSA-OFFICIAL`).collection('TeamMembers')
+    const CollectionOfUserProfiles = client.db(`UTSA-OFFICIAL`).collection('User-Profiles')
+    const CollectionOfOnudaanData = client.db(`UTSA-OFFICIAL`).collection('Donation')
 
     console.log('db connented')
     //adminEmail
